@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HaberAtolyesi.Models.Bolumler>
+
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <br /> <br />
+                <h1>Youtube Programı Listesi</h1>
+                @if (!string.IsNullOrEmpty(TempData["SuccessMessageY"] as string))
+                {
+                    <div class="alert alert-success">@TempData["SuccessMessageY"]</div>
+                }
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center bg-white mb-1" style="height: 130px;">
+
+
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <small> @item.Create_Time</small>
+                                </div>
+                                <a target="_blank" href="@item.Link"><p class=" m-0 text-secondary">@item.Baslik</p></a>
+                            </div>
+                            <a href="@Url.Action("DeleteProgram", "Admin", new { id = item.Id })" class="btn btn-outline-danger" type="submit">Sil</a>
+                        </div>
+
+                    </div>
+                }
+
+
+
+
+
+
+
+
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

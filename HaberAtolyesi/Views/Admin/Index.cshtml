@@ -1,0 +1,58 @@
+﻿@model IEnumerable<HaberAtolyesi.Models.Haber>
+
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <br /> <br />
+                       <h3>Haber Listesi</h3>
+                       <div class="row">
+
+                          
+                           @foreach (var item in Model)
+                           {
+
+                              
+                                   <div class="col-lg-6">
+                                       <div class="d-flex align-items-center bg-white mb-1" style="height: 130px;">
+                                           <a href="@Url.Action("Detay", "Home", new { id = item.Id })">
+                                           </a>
+
+                                           <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                               <div class="mb-2">
+                                                   <a class="text-body" href="@Url.Action("Detay", "Home", new { id = item.Id })"><small> @item.Create_Time</small></a>
+                                               </div>
+                                               <a href="@Url.Action("Detay", "Home", new { id = item.Id })"><p class=" m-0 text-secondary">@item.Baslik</p></a>
+                                               
+
+
+                                           </div>
+                                           <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" class="btn btn-outline-danger" type="submit">Sil</a>
+                                           <a href="@Url.Action("Update", "Admin", new { id = item.Id })" class="btn btn-outline-warning" type="submit">Güncelle</a>
+                                       </div>
+
+                                   </div>
+                                   
+                               
+
+                           }
+
+
+
+
+
+
+
+
+                       </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
