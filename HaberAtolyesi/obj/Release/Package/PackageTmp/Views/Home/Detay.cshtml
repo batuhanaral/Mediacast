@@ -1,0 +1,41 @@
+﻿@model HaberAtolyesi.Models.HaberViewModel
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<br />
+<br />
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- News Detail Start -->
+                <div class="position-relative mb-3">
+                    @if (Model.Fotograf != null)
+                    {
+                        <img class="img-fluid w-100" src="~/Content/img/@Model.Fotograf" style="object-fit: cover;">
+                    }
+
+                    <div class="bg-white border border-top-0 p-4">
+                        <div class="mb-3">
+
+                            <a class="text-body" href="">@Model.Create_Time.ToString("dd MMM yyyy")</a>
+                        </div>
+                        <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">@Model.Baslik</h1>
+                        <p>
+                            @Html.Raw(Model.Konu)
+
+                        </p>
+
+
+                        <a class="btn btn-primary font-weight-semi-bold py-2 px-3" href="@Url.Action("Index", "Home")">Ana Sayfaya Dön</a>
+                    </div>
+
+                </div>
+
+            </div>
+            @Html.Partial("_PartialSocialMedia");
+
+        </div>
+    </div>
+</div>

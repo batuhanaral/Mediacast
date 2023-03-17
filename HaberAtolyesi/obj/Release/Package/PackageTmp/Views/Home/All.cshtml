@@ -1,0 +1,58 @@
+﻿@model List<HaberAtolyesi.Models.Haber>
+
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<br />
+<br />
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="row">
+
+                    @{
+                        int sayac = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+
+                        sayac += 1;
+                        if (sayac < 100)
+                        {
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                    <a href="@Url.Action("Detay", "Home", new { id = item.Id })">
+                                    </a>
+
+                                    <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="mb-2">
+                                            <a class="text-body" href="@Url.Action("Detay", "Home", new { id = item.Id })"><small> @item.Create_Time.ToString("dd MMM yyyy")</small></a>
+                                        </div>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="@Url.Action("Detay", "Home", new { id = item.Id })">@item.Baslik</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+            @Html.Partial("_PartialSocialMedia");
+
+        </div>
+    </div>
+</div>
+

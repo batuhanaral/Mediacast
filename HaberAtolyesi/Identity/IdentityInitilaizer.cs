@@ -22,12 +22,22 @@ namespace HaberAtolyesi.Identity
             }
 
             //Roller
-            if (!context.Roles.Any(i => i.Name == "personal"))
+            if (!context.Roles.Any(i => i.Name == "superAdmin"))
             {
                 var store = new RoleStore<ApplicationRole>(context);
                 var manager = new RoleManager<ApplicationRole>(store);
-                var role = new ApplicationRole() { Name = "pesonal", Description = "personal rol" };
+                var role = new ApplicationRole() { Name = "superAdmin", Description = "superAdmin rol" };
                 manager.Create(role);
+            }
+            //User
+            if (!context.Users.Any(i => i.Email == "batuhanaral3@gmail.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser() { Name = "superAdmin", Email = "batuhanaral3@gmail.com",UserName= "batuhanaral3@gmail.com" };
+                manager.Create(user,"ATA998123ata");
+                manager.AddToRoles(user.Id, "superAdmin");
+                manager.AddToRoles(user.Id, "admin");
             }
 
             base.Seed(context);

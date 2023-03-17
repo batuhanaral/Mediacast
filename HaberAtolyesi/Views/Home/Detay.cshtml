@@ -13,7 +13,7 @@
                 <div class="position-relative mb-3">
                     @if (Model.Fotograf != null)
                     {
-                        <img class="img-fluid w-100" src="~/Photo/@Model.Fotograf" style="object-fit: cover;">
+                        <img class="img-fluid w-100" src="~/Content/img/@Model.Fotograf" style="object-fit: cover;">
                     }
 
                     <div class="bg-white border border-top-0 p-4">
@@ -34,7 +34,7 @@
                 </div>
 
             </div>
-            @Html.Partial("_PartialSocialMedia");
+            @Html.Partial("_PartialSocialMedia")    
 
         </div>
     </div>

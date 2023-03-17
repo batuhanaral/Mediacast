@@ -32,7 +32,7 @@
                                     <a href="@Url.Action("Detay", "Home", new { id = item.Id })">
                                         @if (item.Fotograf != null)
                                         {
-                                            <img class="img-fluid w-100" src="~/Photo/@item.Fotograf" style="object-fit: cover;">
+                                            <img class="img-fluid w-100" src="~/Content/img/@item.Fotograf" style="object-fit: cover;">
                                         }
 
                                     </a>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            @Html.Partial("_PartialSocialMedia");
+            @Html.Partial("_PartialSocialMedia")
 
         </div>
     </div>

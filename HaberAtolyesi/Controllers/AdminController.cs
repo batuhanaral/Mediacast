@@ -1,4 +1,5 @@
 ﻿using HaberAtolyesi.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,13 +9,11 @@ using System.Web.Mvc;
 
 namespace HaberAtolyesi.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         DataContext db = new DataContext();
-        public ActionResult Deneme()
-        {
-            return View();
-        }
+       
         // GET: Admin
         public ActionResult Index()
         {
@@ -24,6 +23,7 @@ namespace HaberAtolyesi.Controllers
             return View(haberler);
 
         }
+        
         public ActionResult BolumEkleS()
         {
             return View();
@@ -112,8 +112,12 @@ namespace HaberAtolyesi.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult HaberEkle(Haber model, string Photo, string haber,  string kategori )
+        public ActionResult HaberEkle(HaberViewModel model, string Photo, string haber,  string kategori )
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             Haber hb = new Haber();
             hb.Konu = haber;
             hb.Baslik = model.Baslik;
@@ -126,7 +130,7 @@ namespace HaberAtolyesi.Controllers
                 string dosyaAdi = Path.GetFileName(Request.Files[0].FileName);
                 string uzanti = Path.GetExtension(Request.Files[0].FileName);
 
-                string yol = "~/Photo/" + dosyaAdi;
+                string yol = "~/Content/img/" + dosyaAdi;/*buranın başından ~ kalktı eklemeyi unutma*/
                 if (Photo != null)
                 {
                     Request.Files[0].SaveAs(Server.MapPath(yol));
@@ -139,11 +143,6 @@ namespace HaberAtolyesi.Controllers
             TempData["SuccessMessageH"] = "Haber Ekleme Başarılı";
             return RedirectToAction("HaberEkle");
         }
-
-
-
-
-
 
         public ActionResult Update(int Id)
         {
@@ -181,7 +180,7 @@ namespace HaberAtolyesi.Controllers
                             string dosyaAdi = Path.GetFileName(Request.Files[0].FileName);
                             string uzanti = Path.GetExtension(Request.Files[0].FileName);
 
-                            string yol = "~/Photo/" + dosyaAdi;
+                            string yol = "~/Content/img/" + dosyaAdi;
 
                             Request.Files[0].SaveAs(Server.MapPath(yol));
                             haber2.Fotograf = dosyaAdi;

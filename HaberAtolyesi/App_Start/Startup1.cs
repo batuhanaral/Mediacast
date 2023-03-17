@@ -15,7 +15,7 @@ namespace HaberAtolyesi.App_Start
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = "ApplicationCookie",
-                LoginPath = new PathString("/Admin/Login")
+                LoginPath = new PathString("/Home/Index")
             });
         }
     }

@@ -12,12 +12,12 @@ namespace HaberAtolyesi.Models
         [Required]
         [DisplayName("Email")]
         public string Email { get; set; }
-       
+        [DataType(DataType.Password)]
         [Required]
         [DisplayName("Parola")]
         public string Password { get; set; }
 
-
+        [DataType(DataType.Password)]
         [DisplayName("Beni Hatırla")]
         public bool RememberMe { get; set; }
     }

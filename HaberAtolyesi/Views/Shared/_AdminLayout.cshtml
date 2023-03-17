@@ -34,18 +34,14 @@
     <link href="~/Content/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid d-none d-lg-block">
-
-        <div class="row align-items-center bg-white py-3 px-lg-12">
-            <div class="col-lg-2 text-center text-lg-right">
-                <a href="https://htmlcodex.com"><img class="img-fluid" src="~/Content/img/logo.png" alt=""></a>
-            </div>
-            <div class="col-lg-2">
-                <a href="@Url.Action("Index", "Admin")" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4" style="color:#fda426;">Mediacast  </h1>
-                </a>
-            </div>
-
+    <div class="row align-items-center bg-white py-3 px-lg-12">
+        <div class="col-lg-2 text-center text-lg-right">
+            <img class="img-fluid" src="~/Content/img/logo.png" alt="" style="width: 130px; height: 70px;">
+        </div>
+        <div class="col-lg-2">
+            <a href="@Url.Action("Index", "Admin")" class="navbar-brand p-0 d-none d-lg-block">
+                <h1 class="m-0 display-4" style="color:#fda426;">Media-Cast</h1>
+            </a>
         </div>
     </div>
     <!-- Topbar End -->
@@ -65,7 +61,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Program Ekle</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="@Url.Action("BolumEkleS", "Admin")" class="dropdown-item">Podcast Ekle</a>
-                            <a href="@Url.Action("BolumEkley", "Admin")" class="dropdown-item">Haber Atölyesi Tv Ekle</a>
+                            <a href="@Url.Action("BolumEkley", "Admin")" class="dropdown-item">Mediacast Tv Ekle</a>
 
                         </div>
 
@@ -74,21 +70,28 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Program Sil</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="@Url.Action("PodcastList", "Admin")" class="dropdown-item">Podcast Sil</a>
-                            <a href="@Url.Action("YoutubeList", "Admin")" class="dropdown-item">Haber Atölyesi Tv Sil</a>
+                            <a href="@Url.Action("YoutubeList", "Admin")" class="dropdown-item">Mediacast Tv Sil</a>
 
                         </div>
 
                     </div>
+                    @if (User.IsInRole("superAdmin"))
+                    {
+                        <a href="@Url.Action("AddAdmin", "Account")" class="nav-item nav-link ">Admin Ekle</a>
+                        <a href="@Url.Action("ListAdmin", "Account")" class="nav-item nav-link ">Admin Listele</a>
+                    }
+                    <a href="@Url.Action("Logout", "Account")" class="nav-item nav-link">Çıkış Yap</a>
 
-                    <a href="@Url.Action("Logout", "Admin")" class="nav-item nav-link">Çıkış Yap</a>
+
 
 
                 </div>
-
+                <p>@User.Identity.Name</p>
             </div>
         </nav>
     </div>
     @RenderBody()
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="~/Content/lib/easing/easing.min.js"></script>

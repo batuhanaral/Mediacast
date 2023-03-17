@@ -1,0 +1,53 @@
+﻿@model List<HaberAtolyesi.Models.Bolumler>
+
+@{
+    ViewBag.Title = "Haber Atolyesi Tv";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<br />
+<br />
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="row">
+
+                    @{
+                        int sayac = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+
+                        sayac += 1;
+                        if (sayac < 100)
+                        {
+                            <a target="_blank" href="@item.Link" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">@item.Baslik</span>
+                            </a>
+
+
+                        }
+
+                    }
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+            @Html.Partial("_PartialSocialMedia");
+
+        </div>
+    </div>
+</div>
+
+
+
+

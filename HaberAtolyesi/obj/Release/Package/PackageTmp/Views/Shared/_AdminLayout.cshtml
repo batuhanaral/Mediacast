@@ -1,0 +1,122 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8 ">
+    <title>Haber Atolyesi Podcast</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link rel="stylesheet" href="~/Content2/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Content2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Content2/plugins/summernote/summernote-bs4.css">
+
+    <!-- Favicon -->
+    <link href="~/Content/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/Content/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid d-none d-lg-block">
+
+        <div class="row align-items-center bg-white py-3 px-lg-12">
+            <div class="col-lg-2 text-center text-lg-right">
+                <a href="https://htmlcodex.com"><img class="img-fluid" src="~/Content/img/logo.png" alt=""></a>
+            </div>
+            <div class="col-lg-2">
+                <a href="@Url.Action("Index", "Admin")" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4" style="color:#fda426;">Mediacast  </h1>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="@Url.Action("Index", "Admin")" class="nav-item nav-link">Ana Sayfa</a>
+
+                    <a href="@Url.Action("HaberEkle", "Admin")" class="nav-item nav-link ">Haber Ekle</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Program Ekle</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="@Url.Action("BolumEkleS", "Admin")" class="dropdown-item">Podcast Ekle</a>
+                            <a href="@Url.Action("BolumEkley", "Admin")" class="dropdown-item">Mediacast Tv Ekle</a>
+
+                        </div>
+
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Program Sil</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="@Url.Action("PodcastList", "Admin")" class="dropdown-item">Podcast Sil</a>
+                            <a href="@Url.Action("YoutubeList", "Admin")" class="dropdown-item">Mediacast Tv Sil</a>
+
+                        </div>
+
+                    </div>
+                    @if (User.IsInRole("superAdmin"))
+                    {
+                        <a href="@Url.Action("AddAdmin", "Account")" class="nav-item nav-link ">Admin Ekle</a>
+                        <a href="@Url.Action("ListAdmin", "Account")" class="nav-item nav-link ">Admin Listele</a>
+                    }
+                    <a href="@Url.Action("Logout", "Account")" class="nav-item nav-link">Çıkış Yap</a>
+
+
+
+
+                </div>
+                <p>@User.Identity.Name</p>
+            </div>
+        </nav>
+    </div>
+    @RenderBody()
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/lib/easing/easing.min.js"></script>
+    <script src="~/Content/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Content2/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content2/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content2/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content2/dist/js/demo.js"></script>
+    <!-- Summernote -->
+    <script src="~/Content2/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        $(function () {
+            // Summernote
+            $('.textarea').summernote()
+        })
+    </script>
+</body>
+</html>
